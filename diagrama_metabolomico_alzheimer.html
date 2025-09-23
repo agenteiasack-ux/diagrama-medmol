@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #222222;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#FF4136", "font": {"color": "white"}, "id": "Alzheimer", "label": "Enfermedad de Alzheimer", "shape": "dot", "size": 45, "title": "Causa Ra\u00edz"}, {"color": "#0074D9", "font": {"color": "white"}, "id": "Metabolismo de L\u00edpidos", "label": "Metabolismo de L\u00edpidos", "shape": "dot", "size": 35}, {"color": "#0074D9", "font": {"color": "white"}, "id": "Metabolismo de Amino\u00e1cidos", "label": "Metabolismo de Amino\u00e1cidos", "shape": "dot", "size": 35}, {"color": "#0074D9", "font": {"color": "white"}, "id": "Energ\u00eda y Estr\u00e9s Oxidativo", "label": "Energ\u00eda y Estr\u00e9s Oxidativo", "shape": "dot", "size": 35}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "\u2191 Esfinganina-1-fosfato", "label": "\u2191 Esfinganina-1-fosfato", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Neuroinflamaci\u00f3n", "label": "Neuroinflamaci\u00f3n", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "\u2191 7-cetocolesterol", "label": "\u2191 7-cetocolesterol", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Neurotoxicidad e Inducci\u00f3n de Amiloide-\u03b2", "label": "Neurotoxicidad e Inducci\u00f3n de Amiloide-\u03b2", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "Desregulaci\u00f3n del \u00c1cido Araquid\u00f3nico", "label": "Desregulaci\u00f3n del \u00c1cido Araquid\u00f3nico", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Aumento del da\u00f1o celular", "label": "Aumento del da\u00f1o celular", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "Transporte anormal de colesterol", "label": "Transporte anormal de colesterol", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Deposici\u00f3n de Amiloide-\u03b2 e Hiperfosforilaci\u00f3n de Tau", "label": "Deposici\u00f3n de Amiloide-\u03b2 e Hiperfosforilaci\u00f3n de Tau", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "Alteraci\u00f3n en v\u00edas de L-arginina", "label": "Alteraci\u00f3n en v\u00edas de L-arginina", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Neurotoxicidad", "label": "Neurotoxicidad", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "Cambios en Glutamina y Ornitina", "label": "Cambios en Glutamina y Ornitina", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Desequilibrios en el ciclo de la urea", "label": "Desequilibrios en el ciclo de la urea", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "Perturbaci\u00f3n de N,N-dimetilglicina", "label": "Perturbaci\u00f3n de N,N-dimetilglicina", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Da\u00f1o oxidativo al ADN", "label": "Da\u00f1o oxidativo al ADN", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "Disfunci\u00f3n del Ciclo de Krebs", "label": "Disfunci\u00f3n del Ciclo de Krebs", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Disfunci\u00f3n energ\u00e9tica celular", "label": "Disfunci\u00f3n energ\u00e9tica celular", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "Desequilibrio de cobre", "label": "Desequilibrio de cobre", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Aumento del da\u00f1o oxidativo", "label": "Aumento del da\u00f1o oxidativo", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "\u2191 Prote\u00edna GFAP", "label": "\u2191 Prote\u00edna GFAP", "shape": "dot", "size": 20}, {"color": "#2ECC40", "font": {"color": "white"}, "id": "Neuroinflamaci\u00f3n y da\u00f1o glial", "label": "Neuroinflamaci\u00f3n y da\u00f1o glial", "shape": "dot", "size": 25}, {"color": "#FFDC00", "font": {"color": "white"}, "id": "Perturbaci\u00f3n de la Timina", "label": "Perturbaci\u00f3n de la Timina", "shape": "dot", "size": 20}]);
+                  edges = new vis.DataSet([{"from": "Alzheimer", "to": "Metabolismo de L\u00edpidos"}, {"from": "Alzheimer", "to": "Metabolismo de Amino\u00e1cidos"}, {"from": "Alzheimer", "to": "Energ\u00eda y Estr\u00e9s Oxidativo"}, {"color": "#DDDDDD", "from": "Metabolismo de L\u00edpidos", "to": "\u2191 Esfinganina-1-fosfato"}, {"color": "#DDDDDD", "from": "\u2191 Esfinganina-1-fosfato", "to": "Neuroinflamaci\u00f3n"}, {"color": "#DDDDDD", "from": "Metabolismo de L\u00edpidos", "to": "\u2191 7-cetocolesterol"}, {"color": "#DDDDDD", "from": "\u2191 7-cetocolesterol", "to": "Neurotoxicidad e Inducci\u00f3n de Amiloide-\u03b2"}, {"color": "#DDDDDD", "from": "Metabolismo de L\u00edpidos", "to": "Desregulaci\u00f3n del \u00c1cido Araquid\u00f3nico"}, {"color": "#DDDDDD", "from": "Desregulaci\u00f3n del \u00c1cido Araquid\u00f3nico", "to": "Aumento del da\u00f1o celular"}, {"color": "#DDDDDD", "from": "Metabolismo de L\u00edpidos", "to": "Transporte anormal de colesterol"}, {"color": "#DDDDDD", "from": "Transporte anormal de colesterol", "to": "Deposici\u00f3n de Amiloide-\u03b2 e Hiperfosforilaci\u00f3n de Tau"}, {"color": "#DDDDDD", "from": "Metabolismo de Amino\u00e1cidos", "to": "Alteraci\u00f3n en v\u00edas de L-arginina"}, {"color": "#DDDDDD", "from": "Alteraci\u00f3n en v\u00edas de L-arginina", "to": "Neurotoxicidad"}, {"color": "#DDDDDD", "from": "Metabolismo de Amino\u00e1cidos", "to": "Cambios en Glutamina y Ornitina"}, {"color": "#DDDDDD", "from": "Cambios en Glutamina y Ornitina", "to": "Desequilibrios en el ciclo de la urea"}, {"color": "#DDDDDD", "from": "Metabolismo de Amino\u00e1cidos", "to": "Perturbaci\u00f3n de N,N-dimetilglicina"}, {"color": "#DDDDDD", "from": "Perturbaci\u00f3n de N,N-dimetilglicina", "to": "Da\u00f1o oxidativo al ADN"}, {"color": "#DDDDDD", "from": "Energ\u00eda y Estr\u00e9s Oxidativo", "to": "Disfunci\u00f3n del Ciclo de Krebs"}, {"color": "#DDDDDD", "from": "Disfunci\u00f3n del Ciclo de Krebs", "to": "Disfunci\u00f3n energ\u00e9tica celular"}, {"color": "#DDDDDD", "from": "Energ\u00eda y Estr\u00e9s Oxidativo", "to": "Desequilibrio de cobre"}, {"color": "#DDDDDD", "from": "Desequilibrio de cobre", "to": "Aumento del da\u00f1o oxidativo"}, {"color": "#DDDDDD", "from": "Energ\u00eda y Estr\u00e9s Oxidativo", "to": "\u2191 Prote\u00edna GFAP"}, {"color": "#DDDDDD", "from": "\u2191 Prote\u00edna GFAP", "to": "Neuroinflamaci\u00f3n y da\u00f1o glial"}, {"color": "#DDDDDD", "from": "Energ\u00eda y Estr\u00e9s Oxidativo", "to": "Perturbaci\u00f3n de la Timina"}, {"color": "#DDDDDD", "from": "Perturbaci\u00f3n de la Timina", "to": "Da\u00f1o oxidativo al ADN"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
