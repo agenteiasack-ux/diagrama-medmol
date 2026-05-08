@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://mgame_hub001"]
+
+[ext_resource type="Script" path="res://scripts/minigames/MiniGameHubController.gd" id="1_hub"]
+
+[node name="MiniGameHub" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_hub")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 0
+
+[node name="HubHeader" type="Label" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 56)
+size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "Minijuegos del Laboratorio"
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
+
+[node name="ListScroll" type="ScrollContainer" parent="MainLayout"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GameList" type="VBoxContainer" parent="MainLayout/ListScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="GameArea" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+z_index = 10

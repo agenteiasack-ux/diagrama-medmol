@@ -18,6 +18,7 @@ GeneCatalog="*res://scripts/data/GeneCatalog.gd"
 ResourceManager="*res://scripts/autoloads/ResourceManager.gd"
 SaveManager="*res://scripts/autoloads/SaveManager.gd"
 GameManager="*res://scripts/autoloads/GameManager.gd"
+MiniGameManager="*res://scripts/autoloads/MiniGameManager.gd"
 
 [display]
 

@@ -1,0 +1,114 @@
+[gd_scene load_steps=2 format=3 uid="uid://crispr_cut001"]
+
+[ext_resource type="Script" path="res://scripts/minigames/CRISPRCutGame.gd" id="1_crispr"]
+
+[node name="CRISPRCut" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_crispr")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 56)
+
+[node name="TitleLabel" type="Label" parent="MainLayout/Header"]
+size_flags_horizontal = 3
+text = "Corte CRISPR"
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
+
+[node name="TimerLabel" type="Label" parent="MainLayout/Header"]
+custom_minimum_size = Vector2(80, 0)
+text = "40.0s"
+vertical_alignment = 1
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1.0, 0.8, 0.2, 1.0)
+
+[node name="CancelButton" type="Button" parent="MainLayout/Header"]
+custom_minimum_size = Vector2(44, 44)
+text = "X"
+
+[node name="CutsLabel" type="Label" parent="MainLayout"]
+size_flags_horizontal = 3
+horizontal_alignment = 1
+text = "Cortes: 0/5 | Precisos: 0"
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1.0)
+
+[node name="DescLabel" type="Label" parent="MainLayout"]
+size_flags_horizontal = 3
+horizontal_alignment = 1
+text = "Presiona CORTAR cuando el cursor este sobre el sitio activo (rojo)"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.55, 0.55, 0.7, 1.0)
+
+[node name="DNADisplay" type="Control" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 80)
+size_flags_horizontal = 3
+
+[node name="StrandBar" type="ColorRect" parent="MainLayout/DNADisplay"]
+anchor_left = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.15, 0.5, 0.85, 1.0)
+
+[node name="CutSite" type="ColorRect" parent="MainLayout/DNADisplay"]
+anchor_bottom = 1.0
+position = Vector2(400, 0)
+size = Vector2(20, 80)
+color = Color(1.0, 0.3, 0.3, 0.7)
+visible = false
+
+[node name="Cursor" type="ColorRect" parent="MainLayout/DNADisplay"]
+anchor_bottom = 1.0
+position = Vector2(0, 0)
+size = Vector2(12, 80)
+color = Color(0.9, 1.0, 0.2, 1.0)
+
+[node name="FeedbackLabel" type="Label" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 44)
+size_flags_horizontal = 3
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+
+[node name="CutButton" type="Button" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 120)
+size_flags_horizontal = 3
+text = "CORTAR!"
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1.0, 0.3, 0.3, 1.0)
+
+[node name="ResultPanel" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+z_index = 10
+
+[node name="BG" type="ColorRect" parent="ResultPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.1, 0.88)
+
+[node name="VBox" type="VBoxContainer" parent="ResultPanel"]
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.9
+anchor_bottom = 0.7
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="ResultLabel" type="Label" parent="ResultPanel/VBox"]
+horizontal_alignment = 1
+text = "Resultado"
+theme_override_font_sizes/font_size = 18
+
+[node name="OKButton" type="Button" parent="ResultPanel/VBox"]
+custom_minimum_size = Vector2(0, 56)
+text = "Cobrar recompensa"
+theme_override_font_sizes/font_size = 16

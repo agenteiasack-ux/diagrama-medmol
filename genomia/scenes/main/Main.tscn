@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfp8kvv5r1s6e"]
+[gd_scene load_steps=5 format=3 uid="uid://cfp8kvv5r1s6e"]
 
 [ext_resource type="PackedScene" path="res://scenes/lab/Lab.tscn" id="1_lbjrp"]
 [ext_resource type="Script" path="res://scripts/main/MainController.gd" id="2_main1"]
 [ext_resource type="PackedScene" path="res://scenes/genome/GenomeBoard.tscn" id="3_genome"]
+[ext_resource type="PackedScene" path="res://scenes/minigames/MiniGameHub.tscn" id="4_hub"]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -25,7 +26,7 @@ theme_override_font_sizes/font_size = 14
 
 [node name="Genoma" parent="TabContainer" instance=ExtResource("3_genome")]
 
-[node name="Minijuegos" type="Control" parent="TabContainer"]
+[node name="Minijuegos" parent="TabContainer" instance=ExtResource("4_hub")]
 
 [node name="Evolucion" type="Control" parent="TabContainer"]
 
