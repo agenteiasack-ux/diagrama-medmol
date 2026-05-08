@@ -3,6 +3,7 @@ extends Node
 var click_power: float = 1.0
 var offline_seconds: float = 0.0
 var total_clicks: int = 0
+var genome_board = null  # Set by GenomeBoardController on _ready
 
 
 func _ready() -> void:

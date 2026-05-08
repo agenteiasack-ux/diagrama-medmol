@@ -4,6 +4,7 @@ const SAVE_PATH := "user://save.json"
 const AUTO_SAVE_INTERVAL := 30.0
 
 var _timer: float = 0.0
+var _pending_genome: Dictionary = {}
 
 
 func _process(delta: float) -> void:
@@ -19,6 +20,8 @@ func save() -> void:
 		"timestamp": Time.get_unix_time_from_system(),
 		"resources": ResourceManager.to_dict(),
 	}
+	if GameManager.genome_board:
+		data["genome"] = GameManager.genome_board.to_dict()
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
 		file.store_string(JSON.stringify(data, "\t"))
@@ -45,9 +48,14 @@ func load_game() -> void:
 	var offline_sec: float = Time.get_unix_time_from_system() - saved_time
 	offline_sec = clampf(offline_sec, 0.0, 86400.0 * 7.0)
 	ResourceManager.from_dict(data.get("resources", {}))
+	_pending_genome = data.get("genome", {})
 	if offline_sec > 5.0:
 		_apply_offline_progress(offline_sec)
 	EventBus.load_completed.emit(offline_sec)
+
+
+func get_genome_data() -> Dictionary:
+	return _pending_genome
 
 
 func _apply_offline_progress(seconds: float) -> void:
