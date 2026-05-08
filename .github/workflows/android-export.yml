@@ -78,11 +78,14 @@ jobs:
       - name: Configure keystore in export presets
         working-directory: genomia
         run: |
-          sed -i "s|keystore/debug=\"\"|keystore/debug=\"$GITHUB_WORKSPACE/debug.keystore\"|" export_presets.cfg
+          KS="$GITHUB_WORKSPACE/debug.keystore"
+          sed -i "s|keystore/debug=\"\"|keystore/debug=\"$KS\"|" export_presets.cfg
           sed -i 's|keystore/debug_user=""|keystore/debug_user="androiddebugkey"|' export_presets.cfg
           sed -i 's|keystore/debug_password=""|keystore/debug_password="android"|' export_presets.cfg
-          echo "=== Keystore lines in preset ==="
-          grep keystore export_presets.cfg
+          echo "=== export_presets.cfg keystore section ==="
+          grep -n "keystore" export_presets.cfg
+          echo "=== Keystore file exists ==="
+          ls -lh "$KS"
 
       - name: Import project assets
         working-directory: genomia
