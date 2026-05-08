@@ -8,6 +8,7 @@ var genome_board = null  # Set by GenomeBoardController on _ready
 
 func _ready() -> void:
 	EventBus.load_completed.connect(_on_load_completed)
+	EventBus.prestige_triggered.connect(func(_l, _c): apply_prestige())
 	SaveManager.load_game()
 
 
@@ -29,4 +30,13 @@ func set_click_power(power: float) -> void:
 
 
 func apply_prestige() -> void:
-	pass
+	click_power = 1.0
+
+
+func to_dict() -> Dictionary:
+	return {"click_power": click_power, "total_clicks": total_clicks}
+
+
+func from_dict(data: Dictionary) -> void:
+	click_power = data.get("click_power", 1.0)
+	total_clicks = data.get("total_clicks", 0)

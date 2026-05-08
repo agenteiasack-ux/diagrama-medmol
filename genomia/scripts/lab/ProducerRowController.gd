@@ -40,6 +40,8 @@ func _process(_delta: float) -> void:
 	var p := ResourceManager.get_producer(_producer_id)
 	if p and p.manager_unlocked and p.level > 0:
 		cycle_bar.value = (p.timer / p.cycle_time) * 100.0
+	else:
+		cycle_bar.value = 0.0
 
 
 func _on_info_pressed() -> void:

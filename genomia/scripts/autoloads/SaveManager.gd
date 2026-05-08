@@ -19,6 +19,7 @@ func save() -> void:
 		"version": 1,
 		"timestamp": Time.get_unix_time_from_system(),
 		"resources": ResourceManager.to_dict(),
+		"game": GameManager.to_dict(),
 		"minigames": MiniGameManager.to_dict(),
 		"prestige": PrestigeManager.to_dict(),
 		"achievements": AchievementManager.to_dict(),
@@ -51,6 +52,7 @@ func load_game() -> void:
 	var offline_sec: float = Time.get_unix_time_from_system() - saved_time
 	offline_sec = clampf(offline_sec, 0.0, 86400.0 * 7.0)
 	ResourceManager.from_dict(data.get("resources", {}))
+	GameManager.from_dict(data.get("game", {}))
 	MiniGameManager.from_dict(data.get("minigames", {}))
 	PrestigeManager.from_dict(data.get("prestige", {}))
 	AchievementManager.from_dict(data.get("achievements", {}))

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/lab/ProducerRowController.gd" id="1_row01"]
 
 [node name="ProducerRow" type="PanelContainer"]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 148)
 size_flags_horizontal = 3
 script = ExtResource("1_row01")
 
@@ -34,7 +34,7 @@ theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
 
 [node name="InfoButton" type="Button" parent="Margin/MainVBox/ContentRow/Info/NameRow"]
-custom_minimum_size = Vector2(28, 28)
+custom_minimum_size = Vector2(44, 44)
 text = "?"
 theme_override_font_sizes/font_size = 13
 
@@ -66,17 +66,17 @@ theme_override_font_sizes/font_size = 13
 theme_override_colors/font_color = Color(1.0, 0.85, 0.3, 1.0)
 
 [node name="BuyButton" type="Button" parent="Margin/MainVBox/ContentRow/Actions"]
-custom_minimum_size = Vector2(130, 32)
+custom_minimum_size = Vector2(130, 48)
 text = "Comprar"
 theme_override_font_sizes/font_size = 13
 
 [node name="BuyX10Button" type="Button" parent="Margin/MainVBox/ContentRow/Actions"]
-custom_minimum_size = Vector2(130, 28)
+custom_minimum_size = Vector2(130, 44)
 text = "x10"
 theme_override_font_sizes/font_size = 12
 
 [node name="ManagerButton" type="Button" parent="Margin/MainVBox/ContentRow/Actions"]
-custom_minimum_size = Vector2(130, 28)
+custom_minimum_size = Vector2(130, 44)
 text = "Manager"
 theme_override_font_sizes/font_size = 11
 disabled = true

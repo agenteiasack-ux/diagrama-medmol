@@ -164,6 +164,8 @@ func reset_for_prestige(keep_fraction: float) -> void:
 	_recalc_rates()
 	for id in RESOURCE_IDS:
 		EventBus.resource_changed.emit(id, resources[id])
+	for p in producers:
+		EventBus.producer_upgraded.emit(p.id, 0)
 
 
 # --- API publica ---
