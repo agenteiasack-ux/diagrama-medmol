@@ -13,6 +13,7 @@ config/features=PackedStringArray("4.3", "Mobile")
 
 [autoload]
 
+UITheme="*res://scripts/ui/UITheme.gd"
 EventBus="*res://scripts/autoloads/EventBus.gd"
 GeneCatalog="*res://scripts/data/GeneCatalog.gd"
 ResourceManager="*res://scripts/autoloads/ResourceManager.gd"

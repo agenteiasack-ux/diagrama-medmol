@@ -9,6 +9,7 @@ var _toast_timer: float = 0.0
 
 
 func _ready() -> void:
+	theme = UITheme.theme
 	EventBus.load_completed.connect(_on_load_completed)
 	EventBus.achievement_unlocked.connect(_on_achievement_unlocked)
 	_setup_tab_titles()
