@@ -42,6 +42,7 @@ jobs:
           sudo install -m755 \
             "Godot_v${GODOT_VERSION}-stable_linux.x86_64" \
             /usr/local/bin/godot
+          godot --version
 
       - name: Install export templates
         run: |
@@ -49,8 +50,10 @@ jobs:
           mkdir -p "$TDIR"
           wget -q \
             "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
-          unzip -q "Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          unzip "Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
           mv templates/* "$TDIR/"
+          echo "=== Android templates installed ==="
+          ls "$TDIR/" | grep -i android
 
       - name: Generate debug keystore
         run: |
@@ -60,41 +63,41 @@ jobs:
             -keyalg RSA -keysize 2048 -validity 10000 \
             -storepass android -keypass android \
             -dname "CN=Android Debug,O=Android,C=US"
+          echo "Keystore: $(ls -lh $GITHUB_WORKSPACE/debug.keystore)"
 
-      - name: Create Godot editor settings
+      - name: Configure Godot editor settings
         run: |
           mkdir -p "$HOME/.config/godot"
-          cat > "$HOME/.config/godot/editor_settings-4.tres" << EOSETTINGS
-          [gd_resource type="EditorSettings" format=3]
-
-          [resource]
-          export/android/android_sdk_path = "$ANDROID_SDK_ROOT"
-          export/android/debug_keystore = "$GITHUB_WORKSPACE/debug.keystore"
-          export/android/debug_keystore_user = "androiddebugkey"
-          export/android/debug_keystore_pass = "android"
-          EOSETTINGS
+          printf '[gd_resource type="EditorSettings" format=3]\n\n[resource]\nexport/android/android_sdk_path = "%s"\nexport/android/debug_keystore = "%s"\nexport/android/debug_keystore_user = "androiddebugkey"\nexport/android/debug_keystore_pass = "android"\n' \
+            "$ANDROID_SDK_ROOT" \
+            "$GITHUB_WORKSPACE/debug.keystore" \
+            > "$HOME/.config/godot/editor_settings-4.tres"
+          echo "=== Editor settings ==="
+          cat "$HOME/.config/godot/editor_settings-4.tres"
 
       - name: Configure keystore in export presets
         working-directory: genomia
         run: |
-          sed -i \
-            's|keystore/debug=""|keystore/debug="'"$GITHUB_WORKSPACE"'/debug.keystore"|' \
-            export_presets.cfg
-          sed -i \
-            's|keystore/debug_user=""|keystore/debug_user="androiddebugkey"|' \
-            export_presets.cfg
-          sed -i \
-            's|keystore/debug_password=""|keystore/debug_password="android"|' \
-            export_presets.cfg
+          sed -i "s|keystore/debug=\"\"|keystore/debug=\"$GITHUB_WORKSPACE/debug.keystore\"|" export_presets.cfg
+          sed -i 's|keystore/debug_user=""|keystore/debug_user="androiddebugkey"|' export_presets.cfg
+          sed -i 's|keystore/debug_password=""|keystore/debug_password="android"|' export_presets.cfg
+          echo "=== Keystore lines in preset ==="
+          grep keystore export_presets.cfg
+
+      - name: Import project assets
+        working-directory: genomia
+        run: |
+          godot --headless --import 2>&1 || true
+          echo "Import done"
 
       - name: Create output directory
         run: mkdir -p genomia/builds
 
       - name: Export APK
         working-directory: genomia
-        run: godot --headless --export-debug "Android" builds/genomia.apk
+        run: godot --headless --export-debug "Android" builds/genomia.apk 2>&1
 
-      - name: Verify APK exists
+      - name: Verify APK
         run: ls -lh genomia/builds/genomia.apk
 
       - name: Upload APK artifact
