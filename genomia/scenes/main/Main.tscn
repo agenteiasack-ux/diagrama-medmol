@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfp8kvv5r1s6e"]
+
+[ext_resource type="PackedScene" path="res://scenes/lab/Lab.tscn" id="1_lbjrp"]
+[ext_resource type="Script" path="res://scripts/main/MainController.gd" id="2_main1"]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_main1")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.08, 0.12, 1.0)
+z_index = -1
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+current_tab = 0
+theme_override_font_sizes/font_size = 14
+
+[node name="Lab" parent="TabContainer" instance=ExtResource("1_lbjrp")]
+
+[node name="Genoma" type="Control" parent="TabContainer"]
+
+[node name="Minijuegos" type="Control" parent="TabContainer"]
+
+[node name="Evolucion" type="Control" parent="TabContainer"]
+
+[node name="Logros" type="Control" parent="TabContainer"]
+
+[node name="OfflinePopup" type="AcceptDialog" parent="."]
+title = "Bienvenido de vuelta"
+dialog_text = ""
