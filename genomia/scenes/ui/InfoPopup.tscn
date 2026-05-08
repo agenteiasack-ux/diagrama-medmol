@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx8f3qp7nw2b1"]
+
+[ext_resource type="Script" path="res://scripts/ui/InfoPopup.gd" id="1_info1"]
+
+[node name="InfoPopup" type="AcceptDialog"]
+title = "Informacion"
+min_size = Vector2(520, 380)
+script = ExtResource("1_info1")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 10
+offset_left = 12
+offset_top = 8
+offset_right = -12
+offset_bottom = -8
+
+[node name="TitleLabel" type="Label" parent="VBox"]
+text = "Nombre del Laboratorio"
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
+
+[node name="ProcessLabel" type="Label" parent="VBox"]
+text = "Descripcion del proceso."
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 14
+
+[node name="HSep1" type="HSeparator" parent="VBox"]
+
+[node name="InputLabel" type="Label" parent="VBox"]
+text = "Consume: —"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(1.0, 0.6, 0.3, 1.0)
+
+[node name="OutputLabel" type="Label" parent="VBox"]
+text = "Produce: —"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.3, 1.0, 0.5, 1.0)
+
+[node name="StatsLabel" type="Label" parent="VBox"]
+text = "Nivel —"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.8, 0.8, 0.9, 1.0)
+
+[node name="HSep2" type="HSeparator" parent="VBox"]
+
+[node name="FactHeader" type="Label" parent="VBox"]
+text = "Dato cientifico:"
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.5, 1.0, 1.0)
+
+[node name="FactLabel" type="Label" parent="VBox"]
+text = ""
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.75, 0.75, 0.85, 1.0)

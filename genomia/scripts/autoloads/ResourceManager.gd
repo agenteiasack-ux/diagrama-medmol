@@ -169,12 +169,70 @@ func buy_producer(producer_id: String) -> bool:
 	var cost := p.get_cost()
 	if not resources["nt"].greater_than_or_equal(cost):
 		return false
+	var was_zero := p.level == 0
 	resources["nt"] = resources["nt"].subtract(cost)
 	p.level += 1
 	_recalc_rates()
 	EventBus.resource_changed.emit("nt", resources["nt"])
 	EventBus.producer_upgraded.emit(producer_id, p.level)
+	if was_zero:
+		_check_unlock_next(producer_id)
 	return true
+
+
+func buy_producer_bulk(producer_id: String, count: int) -> int:
+	var p := get_producer(producer_id)
+	if not p:
+		return 0
+	var was_zero := p.level == 0
+	var bought := 0
+	for _i in range(count):
+		var cost := p.get_cost()
+		if not resources["nt"].greater_than_or_equal(cost):
+			break
+		resources["nt"] = resources["nt"].subtract(cost)
+		p.level += 1
+		bought += 1
+	if bought > 0:
+		_recalc_rates()
+		EventBus.resource_changed.emit("nt", resources["nt"])
+		EventBus.producer_upgraded.emit(producer_id, p.level)
+		if was_zero:
+			_check_unlock_next(producer_id)
+	return bought
+
+
+func get_producer_cost_x10(producer_id: String) -> BigNumber:
+	var p := get_producer(producer_id)
+	if not p:
+		return BigNumber.zero()
+	var total := BigNumber.zero()
+	for i in range(10):
+		total = total.add(BigNumber.from_float(
+			p.base_cost * pow(p.cost_multiplier, float(p.level + i))
+		))
+	return total
+
+
+func is_producer_unlocked(producer_id: String) -> bool:
+	var idx := _get_producer_index(producer_id)
+	if idx <= 0:
+		return true
+	return producers[idx - 1].level >= 1
+
+
+func _get_producer_index(id: String) -> int:
+	for i in producers.size():
+		if producers[i].id == id:
+			return i
+	return -1
+
+
+func _check_unlock_next(producer_id: String) -> void:
+	var idx := _get_producer_index(producer_id)
+	if idx < 0 or idx >= producers.size() - 1:
+		return
+	EventBus.producer_unlocked.emit(producers[idx + 1].id)
 
 
 func get_producer(id: String) -> ProducerState:

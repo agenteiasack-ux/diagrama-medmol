@@ -12,61 +12,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_constants/separation = 0
 
-[node name="ResourceBar" type="HBoxContainer" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 80)
-theme_override_constants/separation = 16
-
-[node name="BarBG" type="ColorRect" parent="MainLayout/ResourceBar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(0.06, 0.06, 0.10, 1.0)
-z_index = -1
-
-[node name="NtLabel" type="Label" parent="MainLayout/ResourceBar"]
+[node name="ResourceGrid" type="GridContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 100)
 size_flags_horizontal = 3
-text = "Nt: 0"
-vertical_alignment = 1
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 16
-theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
-
-[node name="ADNLabel" type="Label" parent="MainLayout/ResourceBar"]
-size_flags_horizontal = 3
-text = "ADN: 0"
-vertical_alignment = 1
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 16
-theme_override_colors/font_color = Color(0.3, 1.0, 0.5, 1.0)
-
-[node name="MRNALabel" type="Label" parent="MainLayout/ResourceBar"]
-size_flags_horizontal = 3
-text = "ARNm: 0"
-vertical_alignment = 1
-horizontal_alignment = 1
-theme_override_font_sizes/font_size = 16
-theme_override_colors/font_color = Color(1.0, 0.8, 0.2, 1.0)
+columns = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 
 [node name="ClickButton" type="Button" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 180)
+custom_minimum_size = Vector2(0, 148)
 size_flags_horizontal = 3
 text = "Sintetizar\nNucleotidos"
 theme_override_font_sizes/font_size = 22
 
 [node name="ClickRateLabel" type="Label" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 28)
+custom_minimum_size = Vector2(0, 26)
 size_flags_horizontal = 3
 text = "+1.0 nt/click"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 13
-theme_override_colors/font_color = Color(0.6, 0.6, 0.7, 1.0)
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.55, 0.55, 0.7, 1.0)
 
 [node name="SectionLabel" type="Label" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 36)
+custom_minimum_size = Vector2(0, 32)
 size_flags_horizontal = 3
-text = "Laboratorios"
+text = "LABORATORIOS"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 15
-theme_override_colors/font_color = Color(0.7, 0.7, 0.9, 1.0)
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.45, 0.45, 0.75, 1.0)
 
 [node name="ProducerScroll" type="ScrollContainer" parent="MainLayout"]
 size_flags_vertical = 3
@@ -74,4 +47,4 @@ size_flags_horizontal = 3
 
 [node name="ProducerList" type="VBoxContainer" parent="MainLayout/ProducerScroll"]
 size_flags_horizontal = 3
-theme_override_constants/separation = 6
+theme_override_constants/separation = 5

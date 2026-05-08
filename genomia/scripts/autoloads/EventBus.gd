@@ -6,6 +6,7 @@ signal rate_changed(resource_id: String, new_rate: float)
 
 # Productores
 signal producer_upgraded(producer_id: String, new_level: int)
+signal producer_unlocked(producer_id: String)
 signal producer_cycle_completed(producer_id: String)
 
 # Genes y mutantes
