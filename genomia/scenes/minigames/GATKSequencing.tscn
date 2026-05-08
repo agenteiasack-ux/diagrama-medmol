@@ -64,75 +64,75 @@ alignment = 1
 theme_override_constants/separation = 10
 
 [node name="Slot0" type="Label" parent="MainLayout/CurrentGuess/Display"]
-custom_minimum_size = Vector2(72, 60)
+custom_minimum_size = Vector2(56, 52)
 text = "_"
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 26
 theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1.0)
 
 [node name="Slot1" type="Label" parent="MainLayout/CurrentGuess/Display"]
-custom_minimum_size = Vector2(72, 60)
+custom_minimum_size = Vector2(56, 52)
 text = "_"
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 26
 theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1.0)
 
 [node name="Slot2" type="Label" parent="MainLayout/CurrentGuess/Display"]
-custom_minimum_size = Vector2(72, 60)
+custom_minimum_size = Vector2(56, 52)
 text = "_"
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 26
 theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1.0)
 
 [node name="Slot3" type="Label" parent="MainLayout/CurrentGuess/Display"]
-custom_minimum_size = Vector2(72, 60)
+custom_minimum_size = Vector2(56, 52)
 text = "_"
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 26
 theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1.0)
 
 [node name="Buttons" type="HBoxContainer" parent="MainLayout/CurrentGuess"]
 size_flags_horizontal = 3
 alignment = 1
-theme_override_constants/separation = 8
+theme_override_constants/separation = 6
 
 [node name="ABtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
-custom_minimum_size = Vector2(120, 80)
+custom_minimum_size = Vector2(80, 72)
 text = "A"
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.2, 1.0, 0.8, 1.0)
 
 [node name="TBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
-custom_minimum_size = Vector2(120, 80)
+custom_minimum_size = Vector2(80, 72)
 text = "T"
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(1.0, 0.5, 0.2, 1.0)
 
 [node name="GBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
-custom_minimum_size = Vector2(120, 80)
+custom_minimum_size = Vector2(80, 72)
 text = "G"
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.3, 0.9, 0.3, 1.0)
 
 [node name="CBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
-custom_minimum_size = Vector2(120, 80)
+custom_minimum_size = Vector2(80, 72)
 text = "C"
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 theme_override_colors/font_color = Color(0.8, 0.4, 1.0, 1.0)
 
 [node name="DelBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
-custom_minimum_size = Vector2(100, 80)
+custom_minimum_size = Vector2(72, 72)
 text = "DEL"
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 
 [node name="OKBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
-custom_minimum_size = Vector2(100, 80)
+custom_minimum_size = Vector2(72, 72)
 text = "OK"
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.2, 1.0, 0.4, 1.0)
 
 [node name="ResultPanel" type="Control" parent="."]

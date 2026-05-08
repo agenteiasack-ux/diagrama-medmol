@@ -47,25 +47,25 @@ func _add_upgrade_card(upgrade_id: String) -> void:
 
 	var name_lbl := Label.new()
 	name_lbl.text = data["name"]
-	name_lbl.add_theme_font_size_override("font_size", 15)
+	name_lbl.add_theme_font_size_override("font_size", 16)
 	name_lbl.add_theme_color_override("font_color", Color(0.9, 0.95, 1.0))
 	vbox.add_child(name_lbl)
 
 	var desc_lbl := Label.new()
 	desc_lbl.text = data["desc"]
-	desc_lbl.add_theme_font_size_override("font_size", 11)
+	desc_lbl.add_theme_font_size_override("font_size", 12)
 	desc_lbl.add_theme_color_override("font_color", Color(0.65, 0.65, 0.75))
 	desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vbox.add_child(desc_lbl)
 
 	var cost_lbl := Label.new()
 	cost_lbl.text = "%d EC" % data["cost"]
-	cost_lbl.add_theme_font_size_override("font_size", 13)
+	cost_lbl.add_theme_font_size_override("font_size", 14)
 	cost_lbl.add_theme_color_override("font_color", Color(1.0, 0.85, 0.2))
 	vbox.add_child(cost_lbl)
 
 	var btn := Button.new()
-	btn.custom_minimum_size = Vector2(0, 44)
+	btn.custom_minimum_size = Vector2(0, 46)
 	btn.add_theme_font_size_override("font_size", 14)
 	btn.pressed.connect(_on_upgrade_pressed.bind(upgrade_id))
 	vbox.add_child(btn)

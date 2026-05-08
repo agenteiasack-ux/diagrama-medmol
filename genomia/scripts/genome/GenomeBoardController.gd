@@ -34,7 +34,7 @@ func _ready() -> void:
 func _build_cells() -> void:
 	for i in CELLS:
 		var cell := Button.new()
-		cell.custom_minimum_size = Vector2(196, 148)
+		cell.custom_minimum_size = Vector2(96, 80)
 		cell.text = "+"
 		cell.add_theme_color_override("font_color", Color(0.25, 0.25, 0.38))
 		cell.pressed.connect(_on_cell_tapped.bind(i))

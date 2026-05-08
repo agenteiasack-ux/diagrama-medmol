@@ -41,14 +41,14 @@ func _build_resource_grid() -> void:
 		var name_lbl := Label.new()
 		name_lbl.text = info["label"]
 		name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		name_lbl.add_theme_font_size_override("font_size", 11)
+		name_lbl.add_theme_font_size_override("font_size", 14)
 		name_lbl.add_theme_color_override("font_color", Color(0.55, 0.55, 0.7))
 		cell.add_child(name_lbl)
 
 		var amount_lbl := Label.new()
 		amount_lbl.text = "0"
 		amount_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		amount_lbl.add_theme_font_size_override("font_size", 15)
+		amount_lbl.add_theme_font_size_override("font_size", 18)
 		amount_lbl.add_theme_color_override("font_color", info["color"])
 		cell.add_child(amount_lbl)
 		_amount_labels[id] = amount_lbl
@@ -56,7 +56,7 @@ func _build_resource_grid() -> void:
 		var rate_lbl := Label.new()
 		rate_lbl.text = ""
 		rate_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		rate_lbl.add_theme_font_size_override("font_size", 10)
+		rate_lbl.add_theme_font_size_override("font_size", 12)
 		rate_lbl.add_theme_color_override("font_color", Color(0.4, 0.75, 0.4))
 		cell.add_child(rate_lbl)
 		_rate_labels[id] = rate_lbl

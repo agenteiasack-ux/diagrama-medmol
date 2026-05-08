@@ -13,12 +13,12 @@ anchor_bottom = 1.0
 theme_override_constants/separation = 0
 
 [node name="HubHeader" type="Label" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 56)
+custom_minimum_size = Vector2(0, 60)
 size_flags_horizontal = 3
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "Minijuegos del Laboratorio"
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
 
 [node name="ListScroll" type="ScrollContainer" parent="MainLayout"]

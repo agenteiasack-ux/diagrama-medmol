@@ -13,32 +13,32 @@ anchor_bottom = 1.0
 theme_override_constants/separation = 0
 
 [node name="ResourceGrid" type="GridContainer" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(0, 140)
 size_flags_horizontal = 3
 columns = 3
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
 [node name="ClickButton" type="Button" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 148)
+custom_minimum_size = Vector2(0, 160)
 size_flags_horizontal = 3
 text = "Sintetizar\nNucleotidos"
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 26
 
 [node name="ClickRateLabel" type="Label" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 26)
+custom_minimum_size = Vector2(0, 30)
 size_flags_horizontal = 3
 text = "+1.0 nt/click"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
 theme_override_colors/font_color = Color(0.55, 0.55, 0.7, 1.0)
 
 [node name="SectionLabel" type="Label" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 36)
 size_flags_horizontal = 3
 text = "LABORATORIOS"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 15
 theme_override_colors/font_color = Color(0.45, 0.45, 0.75, 1.0)
 
 [node name="ProducerScroll" type="ScrollContainer" parent="MainLayout"]

@@ -15,14 +15,14 @@ script = ExtResource("2_main1")
 [node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.08, 0.08, 0.12, 1.0)
+color = Color(0.07, 0.07, 0.11, 1.0)
 z_index = -1
 
 [node name="TabContainer" type="TabContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 current_tab = 0
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 20
 
 [node name="Lab" parent="TabContainer" instance=ExtResource("1_lbjrp")]
 
@@ -52,7 +52,7 @@ anchor_bottom = 1.0
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "Logro desbloqueado!"
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 
 [node name="OfflinePopup" type="AcceptDialog" parent="."]
 title = "Bienvenido de vuelta"

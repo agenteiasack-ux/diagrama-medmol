@@ -53,11 +53,11 @@ func _build_grid() -> void:
 	for _row in MAX_TRIES:
 		for _col in SEQ_LEN:
 			var lbl := Label.new()
-			lbl.custom_minimum_size = Vector2(72, 60)
+			lbl.custom_minimum_size = Vector2(56, 52)
 			lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 			lbl.text = "?"
-			lbl.add_theme_font_size_override("font_size", 20)
+			lbl.add_theme_font_size_override("font_size", 18)
 			lbl.add_theme_color_override("font_color", Color(0.25, 0.25, 0.35))
 			guess_grid.add_child(lbl)
 

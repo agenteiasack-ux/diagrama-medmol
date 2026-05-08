@@ -64,7 +64,7 @@ func _build_list() -> void:
 
 func _add_card(game_id: String) -> void:
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(0, 120)
+	panel.custom_minimum_size = Vector2(0, 130)
 	game_list.add_child(panel)
 
 	var hbox := HBoxContainer.new()
@@ -78,26 +78,26 @@ func _add_card(game_id: String) -> void:
 
 	var name_lbl := Label.new()
 	name_lbl.text = GAME_NAMES.get(game_id, game_id)
-	name_lbl.add_theme_font_size_override("font_size", 17)
+	name_lbl.add_theme_font_size_override("font_size", 18)
 	name_lbl.add_theme_color_override("font_color", Color(0.9, 0.95, 1.0))
 	vbox.add_child(name_lbl)
 
 	var desc_lbl := Label.new()
 	desc_lbl.text = GAME_DESC.get(game_id, "")
-	desc_lbl.add_theme_font_size_override("font_size", 12)
+	desc_lbl.add_theme_font_size_override("font_size", 13)
 	desc_lbl.add_theme_color_override("font_color", Color(0.65, 0.65, 0.75))
 	desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	vbox.add_child(desc_lbl)
 
 	var reward_lbl := Label.new()
 	reward_lbl.text = GAME_REWARDS.get(game_id, "")
-	reward_lbl.add_theme_font_size_override("font_size", 12)
+	reward_lbl.add_theme_font_size_override("font_size", 13)
 	reward_lbl.add_theme_color_override("font_color", Color(0.3, 1.0, 0.5))
 	vbox.add_child(reward_lbl)
 
 	var play_btn := Button.new()
-	play_btn.custom_minimum_size = Vector2(150, 80)
-	play_btn.add_theme_font_size_override("font_size", 16)
+	play_btn.custom_minimum_size = Vector2(130, 80)
+	play_btn.add_theme_font_size_override("font_size", 17)
 	play_btn.pressed.connect(_on_play_pressed.bind(game_id))
 	hbox.add_child(play_btn)
 

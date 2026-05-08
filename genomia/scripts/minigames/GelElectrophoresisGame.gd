@@ -40,8 +40,8 @@ func _on_start() -> void:
 	for size in _sizes:
 		var btn := Button.new()
 		btn.text = "%d bp" % size
-		btn.custom_minimum_size = Vector2(150, 70)
-		btn.add_theme_font_size_override("font_size", 16)
+		btn.custom_minimum_size = Vector2(90, 65)
+		btn.add_theme_font_size_override("font_size", 14)
 		btn.pressed.connect(_on_fragment_pressed.bind(size, btn))
 		fragment_container.add_child(btn)
 		_buttons[size] = btn

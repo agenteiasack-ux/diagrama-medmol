@@ -26,7 +26,7 @@ func _add_card(ach_id: String) -> void:
 	var is_unlocked: bool = AchievementManager.unlocked.get(ach_id, false)
 
 	var panel := PanelContainer.new()
-	panel.custom_minimum_size = Vector2(0, 70)
+	panel.custom_minimum_size = Vector2(0, 80)
 	ach_list.add_child(panel)
 
 	var hbox := HBoxContainer.new()
@@ -50,7 +50,7 @@ func _add_card(ach_id: String) -> void:
 
 	var name_lbl := Label.new()
 	name_lbl.text = data["name"] if is_unlocked else "???"
-	name_lbl.add_theme_font_size_override("font_size", 15)
+	name_lbl.add_theme_font_size_override("font_size", 16)
 	name_lbl.add_theme_color_override(
 		"font_color", Color(1.0, 0.95, 0.6) if is_unlocked else Color(0.5, 0.5, 0.55)
 	)
@@ -58,7 +58,7 @@ func _add_card(ach_id: String) -> void:
 
 	var desc_lbl := Label.new()
 	desc_lbl.text = data["desc"] if is_unlocked else "Sigue jugando para descubrirlo"
-	desc_lbl.add_theme_font_size_override("font_size", 12)
+	desc_lbl.add_theme_font_size_override("font_size", 13)
 	desc_lbl.add_theme_color_override(
 		"font_color", Color(0.75, 0.75, 0.8) if is_unlocked else Color(0.4, 0.4, 0.45)
 	)

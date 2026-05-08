@@ -24,9 +24,9 @@ AchievementManager="*res://scripts/autoloads/AchievementManager.gd"
 
 [display]
 
-window/size/viewport_width=1080
-window/size/viewport_height=2340
-window/size/mode=0
+window/size/viewport_width=540
+window/size/viewport_height=1170
+window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
