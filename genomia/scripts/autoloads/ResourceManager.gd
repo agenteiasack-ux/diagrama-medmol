@@ -141,9 +141,29 @@ func _execute_cycle(p: ProducerState) -> void:
 			return
 		resources[p.input_id] = resources[p.input_id].subtract(needed)
 		EventBus.resource_changed.emit(p.input_id, resources[p.input_id])
-	var produced := BigNumber.from_float(p.get_production_per_cycle())
+	var base_prod := p.get_production_per_cycle()
+	var prestige_mult := PrestigeManager.get_production_multiplier(p.output_id)
+	var produced := BigNumber.from_float(base_prod * prestige_mult)
 	resources[p.output_id] = resources[p.output_id].add(produced)
 	EventBus.resource_changed.emit(p.output_id, resources[p.output_id])
+
+
+func reset_for_prestige(keep_fraction: float) -> void:
+	for id in RESOURCE_IDS:
+		if id == "evo_credits":
+			continue
+		if keep_fraction > 0.0:
+			resources[id] = resources[id].multiply_float(keep_fraction)
+		else:
+			resources[id] = BigNumber.zero()
+	for p in producers:
+		p.level = 0
+		p.timer = 0.0
+		p.manager_unlocked = false
+		p.multiplier = 1.0
+	_recalc_rates()
+	for id in RESOURCE_IDS:
+		EventBus.resource_changed.emit(id, resources[id])
 
 
 # --- API publica ---

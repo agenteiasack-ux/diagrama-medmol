@@ -47,7 +47,7 @@ func is_available(id: String) -> bool:
 
 func on_completed(id: String) -> void:
 	_completions[id] = _completions.get(id, 0) + 1
-	_remaining[id] = COOLDOWNS.get(id, 120.0)
+	_remaining[id] = COOLDOWNS.get(id, 120.0) * PrestigeManager.get_cooldown_multiplier()
 
 
 func get_remaining_text(id: String) -> String:

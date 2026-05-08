@@ -19,6 +19,8 @@ ResourceManager="*res://scripts/autoloads/ResourceManager.gd"
 SaveManager="*res://scripts/autoloads/SaveManager.gd"
 GameManager="*res://scripts/autoloads/GameManager.gd"
 MiniGameManager="*res://scripts/autoloads/MiniGameManager.gd"
+PrestigeManager="*res://scripts/autoloads/PrestigeManager.gd"
+AchievementManager="*res://scripts/autoloads/AchievementManager.gd"
 
 [display]
 

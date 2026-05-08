@@ -22,7 +22,7 @@ signal minigame_cooldown_ready(minigame_id: String)
 
 # Prestige
 signal prestige_available
-signal prestige_triggered(credits_earned: float)
+signal prestige_triggered(new_level: int, credits_earned: int)
 
 # Logros
 signal achievement_unlocked(achievement_id: String, title: String)

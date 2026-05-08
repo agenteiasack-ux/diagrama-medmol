@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfp8kvv5r1s6e"]
+[gd_scene load_steps=7 format=3 uid="uid://cfp8kvv5r1s6e"]
 
 [ext_resource type="PackedScene" path="res://scenes/lab/Lab.tscn" id="1_lbjrp"]
 [ext_resource type="Script" path="res://scripts/main/MainController.gd" id="2_main1"]
 [ext_resource type="PackedScene" path="res://scenes/genome/GenomeBoard.tscn" id="3_genome"]
 [ext_resource type="PackedScene" path="res://scenes/minigames/MiniGameHub.tscn" id="4_hub"]
+[ext_resource type="PackedScene" path="res://scenes/evolution/EvolutionTree.tscn" id="5_evol"]
+[ext_resource type="PackedScene" path="res://scenes/achievements/AchievementsView.tscn" id="6_ach"]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -28,9 +30,29 @@ theme_override_font_sizes/font_size = 14
 
 [node name="Minijuegos" parent="TabContainer" instance=ExtResource("4_hub")]
 
-[node name="Evolucion" type="Control" parent="TabContainer"]
+[node name="Evolucion" parent="TabContainer" instance=ExtResource("5_evol")]
 
-[node name="Logros" type="Control" parent="TabContainer"]
+[node name="Logros" parent="TabContainer" instance=ExtResource("6_ach")]
+
+[node name="ToastContainer" type="Control" parent="."]
+anchor_left = 0.05
+anchor_top = 0.82
+anchor_right = 0.95
+anchor_bottom = 0.92
+z_index = 100
+visible = false
+
+[node name="ToastBG" type="PanelContainer" parent="ToastContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ToastLabel" type="Label" parent="ToastContainer/ToastBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "Logro desbloqueado!"
+theme_override_font_sizes/font_size = 16
 
 [node name="OfflinePopup" type="AcceptDialog" parent="."]
 title = "Bienvenido de vuelta"

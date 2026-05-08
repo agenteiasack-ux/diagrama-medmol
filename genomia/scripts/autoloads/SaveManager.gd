@@ -20,6 +20,8 @@ func save() -> void:
 		"timestamp": Time.get_unix_time_from_system(),
 		"resources": ResourceManager.to_dict(),
 		"minigames": MiniGameManager.to_dict(),
+		"prestige": PrestigeManager.to_dict(),
+		"achievements": AchievementManager.to_dict(),
 	}
 	if GameManager.genome_board:
 		data["genome"] = GameManager.genome_board.to_dict()
@@ -50,6 +52,8 @@ func load_game() -> void:
 	offline_sec = clampf(offline_sec, 0.0, 86400.0 * 7.0)
 	ResourceManager.from_dict(data.get("resources", {}))
 	MiniGameManager.from_dict(data.get("minigames", {}))
+	PrestigeManager.from_dict(data.get("prestige", {}))
+	AchievementManager.from_dict(data.get("achievements", {}))
 	_pending_genome = data.get("genome", {})
 	if offline_sec > 5.0:
 		_apply_offline_progress(offline_sec)
