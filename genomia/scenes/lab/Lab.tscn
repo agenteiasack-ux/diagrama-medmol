@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsrt3k6p21mq7"]
+
+[ext_resource type="Script" path="res://scripts/lab/LabController.gd" id="1_lab01"]
+[ext_resource type="Script" path="res://scripts/ui/DNABackground.gd" id="2_dna_bg"]
+
+[node name="Lab" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_lab01")
+
+[node name="DNABg" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("2_dna_bg")
+z_index = -1
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 0
+
+[node name="ResourceGrid" type="GridContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 140)
+size_flags_horizontal = 3
+columns = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="ClickButton" type="Button" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 170)
+size_flags_horizontal = 3
+text = "◈  SINTETIZAR\nNUCLEOTIDOS  ◈"
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(0.0, 1.0, 0.55, 1.0)
+
+[node name="ClickRateLabel" type="Label" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 30)
+size_flags_horizontal = 3
+text = "+1.0 nt/click"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.0, 0.85, 1.0, 0.75)
+
+[node name="SectionLabel" type="Label" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 36)
+size_flags_horizontal = 3
+text = "— LABORATORIOS —"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.30, 0.32, 0.55, 1.0)
+
+[node name="ProducerScroll" type="ScrollContainer" parent="MainLayout"]
+size_flags_vertical = 3
+size_flags_horizontal = 3
+
+[node name="ProducerList" type="VBoxContainer" parent="MainLayout/ProducerScroll"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 5

@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://gn0m3b0ard001"]
+
+[ext_resource type="Script" path="res://scripts/genome/GenomeBoardController.gd" id="1_gb01"]
+
+[node name="GenomeBoard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_gb01")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="HBoxContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 76)
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="GenesLabel" type="Label" parent="MainLayout/TopBar"]
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Genes: 0"
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.3, 0.9, 1.0, 1.0)
+
+[node name="SequenceButton" type="Button" parent="MainLayout/TopBar"]
+custom_minimum_size = Vector2(180, 50)
+size_flags_vertical = 4
+text = "Secuenciar (5 genes)"
+theme_override_font_sizes/font_size = 14
+disabled = true
+
+[node name="BoardFullLabel" type="Label" parent="MainLayout/TopBar"]
+size_flags_vertical = 4
+text = "Lleno!"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0, 0.4, 0.3, 1.0)
+visible = false
+
+[node name="MergeHint" type="Label" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 36)
+size_flags_horizontal = 3
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1.0, 0.85, 0.2, 1.0)
+
+[node name="BoardScroll" type="ScrollContainer" parent="MainLayout"]
+size_flags_vertical = 3
+size_flags_horizontal = 3
+
+[node name="Grid" type="GridContainer" parent="MainLayout/BoardScroll"]
+size_flags_horizontal = 3
+columns = 5
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="MutantLog" type="Label" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 32)
+size_flags_horizontal = 3
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.0, 1.0, 0.6, 1.0)

@@ -1,0 +1,165 @@
+[gd_scene load_steps=2 format=3 uid="uid://gatk_seq001"]
+
+[ext_resource type="Script" path="res://scripts/minigames/GATKSequencingGame.gd" id="1_gatk"]
+
+[node name="GATKSequencing" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_gatk")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 56)
+
+[node name="TitleLabel" type="Label" parent="MainLayout/Header"]
+size_flags_horizontal = 3
+text = "Secuenciacion GATK"
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
+
+[node name="TimerLabel" type="Label" parent="MainLayout/Header"]
+custom_minimum_size = Vector2(80, 0)
+text = "60.0s"
+vertical_alignment = 1
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1.0, 0.8, 0.2, 1.0)
+
+[node name="CancelButton" type="Button" parent="MainLayout/Header"]
+custom_minimum_size = Vector2(44, 44)
+text = "X"
+
+[node name="DescLabel" type="Label" parent="MainLayout"]
+size_flags_horizontal = 3
+horizontal_alignment = 1
+text = "Descifra la secuencia de 4 bases en 5 intentos"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1.0)
+
+[node name="LegendLabel" type="Label" parent="MainLayout"]
+size_flags_horizontal = 3
+horizontal_alignment = 1
+text = "Verde = exacto    Amarillo = posicion erronea    Gris = ausente"
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.55, 0.55, 0.65, 1.0)
+
+[node name="GuessGrid" type="GridContainer" parent="MainLayout"]
+size_flags_horizontal = 3
+columns = 4
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="CurrentGuess" type="VBoxContainer" parent="MainLayout"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="Display" type="HBoxContainer" parent="MainLayout/CurrentGuess"]
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="Slot0" type="Label" parent="MainLayout/CurrentGuess/Display"]
+custom_minimum_size = Vector2(56, 52)
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1.0)
+
+[node name="Slot1" type="Label" parent="MainLayout/CurrentGuess/Display"]
+custom_minimum_size = Vector2(56, 52)
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1.0)
+
+[node name="Slot2" type="Label" parent="MainLayout/CurrentGuess/Display"]
+custom_minimum_size = Vector2(56, 52)
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1.0)
+
+[node name="Slot3" type="Label" parent="MainLayout/CurrentGuess/Display"]
+custom_minimum_size = Vector2(56, 52)
+text = "_"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1.0)
+
+[node name="Buttons" type="HBoxContainer" parent="MainLayout/CurrentGuess"]
+size_flags_horizontal = 3
+alignment = 1
+theme_override_constants/separation = 6
+
+[node name="ABtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
+custom_minimum_size = Vector2(80, 72)
+text = "A"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.2, 1.0, 0.8, 1.0)
+
+[node name="TBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
+custom_minimum_size = Vector2(80, 72)
+text = "T"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1.0, 0.5, 0.2, 1.0)
+
+[node name="GBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
+custom_minimum_size = Vector2(80, 72)
+text = "G"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.3, 0.9, 0.3, 1.0)
+
+[node name="CBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
+custom_minimum_size = Vector2(80, 72)
+text = "C"
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.8, 0.4, 1.0, 1.0)
+
+[node name="DelBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
+custom_minimum_size = Vector2(72, 72)
+text = "DEL"
+theme_override_font_sizes/font_size = 16
+
+[node name="OKBtn" type="Button" parent="MainLayout/CurrentGuess/Buttons"]
+custom_minimum_size = Vector2(72, 72)
+text = "OK"
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.2, 1.0, 0.4, 1.0)
+
+[node name="ResultPanel" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+z_index = 10
+
+[node name="BG" type="ColorRect" parent="ResultPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.1, 0.88)
+
+[node name="VBox" type="VBoxContainer" parent="ResultPanel"]
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.9
+anchor_bottom = 0.7
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="ResultLabel" type="Label" parent="ResultPanel/VBox"]
+horizontal_alignment = 1
+text = "Resultado"
+theme_override_font_sizes/font_size = 18
+
+[node name="OKButton" type="Button" parent="ResultPanel/VBox"]
+custom_minimum_size = Vector2(0, 56)
+text = "Cobrar recompensa"
+theme_override_font_sizes/font_size = 16

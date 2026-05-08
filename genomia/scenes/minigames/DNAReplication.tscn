@@ -1,0 +1,122 @@
+[gd_scene load_steps=2 format=3 uid="uid://dna_rep001"]
+
+[ext_resource type="Script" path="res://scripts/minigames/DNAReplicationGame.gd" id="1_dna"]
+
+[node name="DNAReplication" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_dna")
+
+[node name="MainLayout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 56)
+
+[node name="TitleLabel" type="Label" parent="MainLayout/Header"]
+size_flags_horizontal = 3
+text = "Replicacion de ADN"
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.0, 0.9, 1.0, 1.0)
+
+[node name="TimerLabel" type="Label" parent="MainLayout/Header"]
+custom_minimum_size = Vector2(80, 0)
+text = "30.0s"
+vertical_alignment = 1
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1.0, 0.8, 0.2, 1.0)
+
+[node name="CancelButton" type="Button" parent="MainLayout/Header"]
+custom_minimum_size = Vector2(44, 44)
+text = "X"
+
+[node name="StepLabel" type="Label" parent="MainLayout"]
+size_flags_horizontal = 3
+horizontal_alignment = 1
+text = "Base 1/12"
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.7, 0.7, 0.8, 1.0)
+
+[node name="CurrentBase" type="Label" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 160)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 96
+theme_override_colors/font_color = Color(0.2, 0.95, 0.6, 1.0)
+
+[node name="ComplementLabel" type="Label" parent="MainLayout"]
+size_flags_horizontal = 3
+horizontal_alignment = 1
+text = "Toca el complemento:"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.65, 0.65, 0.75, 1.0)
+
+[node name="BaseButtons" type="HBoxContainer" parent="MainLayout"]
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="ABtn" type="Button" parent="MainLayout/BaseButtons"]
+custom_minimum_size = Vector2(120, 80)
+text = "A"
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.3, 0.8, 1.0, 1.0)
+
+[node name="TBtn" type="Button" parent="MainLayout/BaseButtons"]
+custom_minimum_size = Vector2(120, 80)
+text = "T"
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1.0, 0.5, 0.3, 1.0)
+
+[node name="GBtn" type="Button" parent="MainLayout/BaseButtons"]
+custom_minimum_size = Vector2(120, 80)
+text = "G"
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.3, 1.0, 0.5, 1.0)
+
+[node name="CBtn" type="Button" parent="MainLayout/BaseButtons"]
+custom_minimum_size = Vector2(120, 80)
+text = "C"
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(0.9, 0.3, 1.0, 1.0)
+
+[node name="ScoreLabel" type="Label" parent="MainLayout"]
+size_flags_horizontal = 3
+horizontal_alignment = 1
+text = "Correctas: 0"
+theme_override_font_sizes/font_size = 15
+
+[node name="ResultPanel" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+z_index = 10
+
+[node name="BG" type="ColorRect" parent="ResultPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.1, 0.88)
+
+[node name="VBox" type="VBoxContainer" parent="ResultPanel"]
+anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.9
+anchor_bottom = 0.7
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="ResultLabel" type="Label" parent="ResultPanel/VBox"]
+horizontal_alignment = 1
+text = "Resultado"
+theme_override_font_sizes/font_size = 18
+
+[node name="OKButton" type="Button" parent="ResultPanel/VBox"]
+custom_minimum_size = Vector2(0, 56)
+text = "Cobrar recompensa"
+theme_override_font_sizes/font_size = 16

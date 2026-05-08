@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://g3n3c4rd0001"]
+
+[ext_resource type="Script" path="res://scripts/genome/GeneCardController.gd" id="1_gc01"]
+
+[node name="GeneCard" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_gc01")
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.1, 0.2, 0.9)
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/separation = 2
+offset_left = 4
+offset_top = 4
+offset_right = -4
+offset_bottom = -4
+mouse_filter = 2
+
+[node name="RarityLabel" type="Label" parent="VBox"]
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 10
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="VBox"]
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.93, 0.93, 1.0, 1.0)
+autowrap_mode = 2
+mouse_filter = 2
+
+[node name="EffectLabel" type="Label" parent="VBox"]
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.6, 0.9, 0.6, 1.0)
+autowrap_mode = 3
+mouse_filter = 2
+
+[node name="SelectedOverlay" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1.0, 0.9, 0.1, 0.22)
+visible = false
+mouse_filter = 2

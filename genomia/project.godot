@@ -1,0 +1,41 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; but the file format allows editing it directly.
+
+config_version=5
+
+[application]
+
+config/name="GENOMIA Idle Lab"
+config/version="0.1.0"
+run/main_scene="res://scenes/main/Main.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+
+[autoload]
+
+UITheme="*res://scripts/ui/UITheme.gd"
+EventBus="*res://scripts/autoloads/EventBus.gd"
+GeneCatalog="*res://scripts/data/GeneCatalog.gd"
+ResourceManager="*res://scripts/autoloads/ResourceManager.gd"
+SaveManager="*res://scripts/autoloads/SaveManager.gd"
+GameManager="*res://scripts/autoloads/GameManager.gd"
+MiniGameManager="*res://scripts/autoloads/MiniGameManager.gd"
+PrestigeManager="*res://scripts/autoloads/PrestigeManager.gd"
+AchievementManager="*res://scripts/autoloads/AchievementManager.gd"
+
+[display]
+
+window/size/viewport_width=540
+window/size/viewport_height=1170
+window/size/mode=2
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
