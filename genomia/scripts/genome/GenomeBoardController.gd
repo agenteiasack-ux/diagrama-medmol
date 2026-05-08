@@ -209,7 +209,7 @@ func _refresh_all_cells() -> void:
 
 
 func _refresh_top_bar() -> void:
-	var genes_val := ResourceManager.resources["genes"].to_float()
+	var genes_val: float = ResourceManager.resources["genes"].to_float()
 	genes_label.text = "Genes: %s" % ResourceManager.resources["genes"].format()
 	var empty := _first_empty()
 	sequence_btn.disabled = genes_val < GENES_PER_CARD or empty == -1

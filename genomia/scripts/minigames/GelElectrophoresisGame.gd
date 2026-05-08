@@ -60,7 +60,7 @@ func _on_fragment_pressed(size: int, btn: Button) -> void:
 	lbl.text = "%d bp" % size
 	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	lbl.add_theme_font_size_override("font_size", 14)
-	var expected := _correct_order[_sorted.size() - 1]
+	var expected: int = _correct_order[_sorted.size() - 1]
 	lbl.add_theme_color_override(
 		"font_color",
 		Color(0.3, 1.0, 0.4) if size == expected else Color(1.0, 0.4, 0.3)
